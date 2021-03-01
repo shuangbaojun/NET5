@@ -7,7 +7,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
 
 WORKDIR /src
-COPY ["MVC.NET5/MVC.NET5.csproj", "MVC.NET5/"]
+COPY ["./MVC.NET5/MVC.NET5.csproj", "MVC.NET5/"]
 RUN dotnet restore "MVC.NET5/MVC.NET5.csproj"
 COPY . .
 WORKDIR "/src/MVC.NET5"
