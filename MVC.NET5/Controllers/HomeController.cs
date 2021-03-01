@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace MVC.NET5.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
