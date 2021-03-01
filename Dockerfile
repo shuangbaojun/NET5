@@ -10,10 +10,10 @@ RUN dpkg -i ca-certificates_20210119_all.deb
 RUN apt-get update && apt-get install -y ca-certificates && update-ca-certificates && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /src
-COPY ["MVC.NET5/MVC.NET5.csproj", ""]
-RUN dotnet restore "./MVC.NET5.csproj"
+COPY ["MVC.NET5/MVC.NET5.csproj", "MVC.NET5/"]
+RUN dotnet restore "MVC.NET5/MVC.NET5.csproj"
 COPY . .
-WORKDIR "/src/."
+WORKDIR "/src/MVC.NET5"
 RUN dotnet build "MVC.NET5.csproj" -c Release -o /app/build
 
 FROM build AS publish
