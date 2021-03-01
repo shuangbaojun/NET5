@@ -5,9 +5,12 @@ WORKDIR /app
 EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
+ADD http://ftp.us.debian.org/debian/pool/main/c/ca-certificates/ca-certificates_20210119_all.deb .
+RUN dpkg -i ca-certificates_20210119_all.deb
+RUN apt-get update && apt-get install -y ca-certificates && update-ca-certificates && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /src
-COPY ["./MVC.NET5/MVC.NET5.csproj", "MVC.NET5/"]
+COPY ["MVC.NET5/MVC.NET5.csproj", "MVC.NET5/"]
 RUN dotnet restore "MVC.NET5/MVC.NET5.csproj"
 COPY . .
 WORKDIR "/src/MVC.NET5"
