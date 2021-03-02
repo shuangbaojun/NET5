@@ -24,7 +24,7 @@ namespace MVC.NET5.Controllers
         public IActionResult Index()
         {
             ViewBag.Time = DateTime.Now;
-            ViewBag.VersonInfo = "v1";
+            ViewBag.VersonInfo = "v1-1";
             ViewBag.Port = base.Request.Host.Port;
             return View();
         }
